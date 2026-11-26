@@ -55,7 +55,7 @@ techhire-hr-system/
 | `AbstractEmployee` | Holds a role, a score, and an optional comparison target. Implements `precedes`/`follows` by score. Leaves `showComparisonResult()` to subclasses. |
 | `Developer` | Implements `showComparisonResult()` to print whether it precedes, follows, or ties with its target. |
 | `Department` | Stores a department name that can be changed with `setDeptName()`. |
-| `Employee` | Holds a name and a `Department`. Implements `Cloneable` and overrides `clone()` to deep-copy the department. |
+| `Employee` | Holds a name and a `Department`. Implements `Cloneable` and overrides `clone()` to deep-copy the department. Rejects a `null` department in the constructor and `setDept()` with a `NullPointerException`. |
 | `Main` | Builds sample objects and prints each demonstration. |
 
 ## How comparison works
@@ -85,7 +85,7 @@ Employee copy = (Employee) super.clone();               // copies fields (shallo
 copy.dept = new Department(this.dept.getDeptName());    // give the copy its own Department
 ```
 
-`String` is immutable, so sharing the name is safe. `Department` contains only a `String`, so creating a new `Department` with the same name is a complete deep copy. After cloning, `cloned.getDept().setDeptName("Research")` changes only the clone.
+Because `Employee` rejects a `null` department when it is constructed or changed, `clone()` can always copy it. `String` is immutable, so sharing the name is safe. `Department` contains only a `String`, so creating a new `Department` with the same name is a complete deep copy. After cloning, `cloned.getDept().setDeptName("Research")` changes only the clone.
 
 ## Design notes: interfaces, inheritance, deep copying
 

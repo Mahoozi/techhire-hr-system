@@ -6,15 +6,18 @@
  * clone() performs a deep copy: the clone receives its own Department
  * object, so changing the clone's department does not affect the original.
  */
+import java.util.Objects;
+
 public class Employee implements Cloneable {
 
     private String name;        // the employee's name
     private Department dept;     // the employee's department (can change)
 
     // Builds an employee with a name and a department.
+    // The department must not be null, because clone() and display() rely on it.
     public Employee(String name, Department dept) {
         this.name = name;
-        this.dept = dept;
+        this.dept = Objects.requireNonNull(dept, "Employee department must not be null");
     }
 
     // Returns the employee's name.
@@ -27,9 +30,9 @@ public class Employee implements Cloneable {
         return dept;
     }
 
-    // Changes the employee's department.
+    // Changes the employee's department. The new department must not be null.
     public void setDept(Department dept) {
-        this.dept = dept;
+        this.dept = Objects.requireNonNull(dept, "Employee department must not be null");
     }
 
     // Makes a deep copy of this employee.
