@@ -21,10 +21,11 @@ public class Main {
         System.out.println("=== Candidate Comparison ===");
         System.out.println();
 
-        // Make three candidates with different scores.
+        // Make candidates with lower, equal, and higher scores than Bob.
         Candidate alice = new Candidate("Alice", 70);
         Candidate bob = new Candidate("Bob", 85);
         Candidate charlie = new Candidate("Charlie", 90);
+        Candidate dana = new Candidate("Dana", 85);
 
         // Alice has a lower score than Bob, so she precedes him.
         System.out.println("Comparing Alice and Bob:");
@@ -37,6 +38,12 @@ public class Main {
         System.out.println("Charlie precedes Bob? " + charlie.precedes(bob));
         System.out.println("Charlie follows Bob? " + charlie.follows(bob));
         System.out.println();
+
+        // Dana has the same score as Bob, so neither precedes nor follows.
+        System.out.println("Comparing Dana and Bob (equal scores):");
+        System.out.println("Dana precedes Bob? " + dana.precedes(bob));
+        System.out.println("Dana follows Bob? " + dana.follows(bob));
+        System.out.println();
     }
 
     // Compares developers through the AbstractEmployee hierarchy.
@@ -44,9 +51,10 @@ public class Main {
         System.out.println("=== Developer Comparison (Abstract Class) ===");
         System.out.println();
 
-        // Make three developers with different scores.
+        // Make developers covering lower, equal, and higher scores.
         Developer intern = new Developer("Intern", 65);
         Developer junior = new Developer("JuniorDev", 75);
+        Developer frontend = new Developer("FrontendDev", 75);
         Developer senior = new Developer("SeniorDev", 92);
 
         // Set the target, then let the developer print the result.
@@ -58,6 +66,16 @@ public class Main {
         System.out.println("Comparing Intern vs. Junior Developer:");
         intern.setComparisonTarget(junior);
         intern.showComparisonResult();
+        System.out.println();
+
+        System.out.println("Comparing Senior Developer vs. Intern:");
+        senior.setComparisonTarget(intern);
+        senior.showComparisonResult();
+        System.out.println();
+
+        System.out.println("Comparing Frontend Developer vs. Junior Developer (equal scores):");
+        frontend.setComparisonTarget(junior);
+        frontend.showComparisonResult();
         System.out.println();
     }
 

@@ -8,6 +8,7 @@ It is a learning and portfolio demo of object-oriented design in Java. It is not
 
 - **Candidate comparison.** `Candidate` implements the `Ordered` interface, so one candidate can be checked as coming before (`precedes`) or after (`follows`) another based on interview score.
 - **Developer comparison through an abstract class.** `AbstractEmployee` implements the shared comparison logic once. `Developer` extends it and prints a readable result: *precedes*, *follows*, or *ties with*.
+- The demo in `Main` runs lower-, equal-, and higher-score comparisons for both candidates and developers.
 - **Deep cloning of employee records.** `Employee.clone()` gives the copy its own `Department`, so renaming the clone's department leaves the original unchanged.
 
 ## Requirements
@@ -105,6 +106,10 @@ Comparing Charlie and Bob:
 Charlie precedes Bob? false
 Charlie follows Bob? true
 
+Comparing Dana and Bob (equal scores):
+Dana precedes Bob? false
+Dana follows Bob? false
+
 === Developer Comparison (Abstract Class) ===
 
 Comparing Junior Developer vs. Senior Developer:
@@ -114,6 +119,14 @@ JuniorDev (score: 75) precedes SeniorDev (score: 92)
 Comparing Intern vs. Junior Developer:
 Score Comparison Result:
 Intern (score: 65) precedes JuniorDev (score: 75)
+
+Comparing Senior Developer vs. Intern:
+Score Comparison Result:
+SeniorDev (score: 92) follows Intern (score: 65)
+
+Comparing Frontend Developer vs. Junior Developer (equal scores):
+Score Comparison Result:
+FrontendDev (score: 75) ties with JuniorDev (score: 75)
 
 === Deep Cloning of Employee Records ===
 
